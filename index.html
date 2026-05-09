@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villain's Hero Database</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🦹 Hero Intelligence File</h1>
+    <p class="subtitle">Classified. Do not share with heroes.</p>
+  </header>
+
+  <div class="controls">
+    <!-- Hichame: Search input goes here -->
+    <input
+      type="text"
+      id="search-input"
+      placeholder="Search by name..."
+    />
+
+    <!-- Page size selector -->
+    <select id="page-size-select">
+      <option value="10">10</option>
+      <option value="20" selected>20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="all">All</option>
+    </select>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="heroes-table">
+      <thead>
+        <tr>
+          <!-- Karima: Add sort indicators (↑ ↓) to these headers via JS -->
+          <th data-col="icon">Icon</th>
+          <th data-col="name">Name</th>
+          <th data-col="fullName">Full Name</th>
+          <th data-col="intelligence">Intelligence</th>
+          <th data-col="strength">Strength</th>
+          <th data-col="speed">Speed</th>
+          <th data-col="durability">Durability</th>
+          <th data-col="power">Power</th>
+          <th data-col="combat">Combat</th>
+          <th data-col="race">Race</th>
+          <th data-col="gender">Gender</th>
+          <th data-col="height">Height</th>
+          <th data-col="weight">Weight</th>
+          <th data-col="placeOfBirth">Place of Birth</th>
+          <th data-col="alignment">Alignment</th>
+        </tr>
+      </thead>
+      <tbody id="heroes-tbody">
+        <!-- Rows are injected here by renderTable() -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination controls go here -->
+  <div class="pagination" id="pagination"></div>
+
+</body>
+</html>
