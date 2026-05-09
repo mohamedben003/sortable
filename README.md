@@ -12,7 +12,7 @@ superhero-project/
 
 ---
 
-## 👑 Mohamed — Foundation
+##  Foundation
 
 **Files:** `index.html`, `style.css`, `main.js` (top section)
 

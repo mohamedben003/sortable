@@ -1,8 +1,3 @@
-// =============================================================
-// main.js — Superhero Table Project
-// Leader: owns this file, fetch, renderTable(), and update()
-// =============================================================
-
 // ─────────────────────────────────────────
 // SHARED STATE (everyone reads these)
 // ─────────────────────────────────────────
@@ -15,7 +10,7 @@ let pageSize = 20;        // set by Mohamed (number or "all")
 
 
 // ─────────────────────────────────────────
-// LEADER: FETCH DATA
+// FETCH DATA
 // ─────────────────────────────────────────
 fetch("https://rawcdn.githack.com/akabab/superhero-api/0.2.0/api/all.json")
   .then((response) => response.json())
@@ -26,7 +21,7 @@ fetch("https://rawcdn.githack.com/akabab/superhero-api/0.2.0/api/all.json")
 
 
 // ─────────────────────────────────────────
-// LEADER: CENTRAL UPDATE PIPELINE
+// CENTRAL UPDATE PIPELINE
 // This is the only function that triggers a re-render.
 // Everyone calls update() when their state changes.
 // ─────────────────────────────────────────
@@ -42,7 +37,7 @@ function update() {
 
 
 // ─────────────────────────────────────────
-// LEADER: RENDER TABLE ROWS
+// RENDER TABLE ROWS
 // Receives the final processed array and displays it.
 // ─────────────────────────────────────────
 function renderTable(heroes) {
