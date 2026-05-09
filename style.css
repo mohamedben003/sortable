@@ -1,0 +1,190 @@
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap');
+
+/* ── Variables ── */
+:root {
+  --bg: #0d0d0f;
+  --surface: #14141a;
+  --border: #2a2a3a;
+  --accent: #e63946;
+  --accent-dim: #7a1a22;
+  --text: #d0d0e0;
+  --text-dim: #606070;
+  --good: #2ecc71;
+  --bad: #e63946;
+  --neutral: #f39c12;
+  --font-title: 'Bebas Neue', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+header .subtitle {
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  margin-top: 0.25rem;
+}
+
+/* ── Controls bar ── */
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+#search-input,
+#page-size-select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 0.4rem 0.75rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#search-input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+#search-input::placeholder { color: var(--text-dim); }
+
+#search-input:focus,
+#page-size-select:focus {
+  border-color: var(--accent);
+}
+
+/* ── Table wrapper ── */
+.table-wrapper {
+  overflow-x: auto;
+  padding: 0 2rem;
+  margin-top: 1rem;
+}
+
+/* ── Table ── */
+#heroes-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+#heroes-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#heroes-table th {
+  background: var(--surface);
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--accent-dim);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  text-align: left;
+}
+
+#heroes-table th:hover { background: #1e1e2a; }
+
+/* Karima: sort indicator class — add .sorted-asc / .sorted-desc to active <th> */
+#heroes-table th.sorted-asc::after  { content: " ↑"; color: var(--text); }
+#heroes-table th.sorted-desc::after { content: " ↓"; color: var(--text); }
+
+#heroes-table td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: middle;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+#heroes-table tbody tr:hover { background: #1a1a24; }
+
+/* Hero icon */
+.hero-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+}
+
+/* Alignment badge */
+.alignment.good    { color: var(--good); }
+.alignment.bad     { color: var(--bad); }
+.alignment.neutral { color: var(--neutral); }
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem;
+  color: var(--text-dim);
+}
+
+/* Mohamed: style your buttons here or add classes */
+.pagination button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pagination button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination #page-info {
+  min-width: 120px;
+  text-align: center;
+  font-size: 12px;
+}
