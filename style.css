@@ -128,6 +128,7 @@ header .subtitle {
 #heroes-table th.sorted-asc::after  { content: " ↑"; color: var(--text); }
 #heroes-table th.sorted-desc::after { content: " ↓"; color: var(--text); }
 
+/* ── All cells: no wrap by default ── */
 #heroes-table td {
   padding: 0.45rem 0.75rem;
   border-bottom: 1px solid var(--border);
@@ -135,6 +136,24 @@ header .subtitle {
   vertical-align: middle;
   white-space: nowrap;
   color: var(--text);
+}
+
+/* ── Long-text columns: allow wrapping with a max width ── */
+/* Full Name (col 3), Race (col 10), Place of Birth (col 14) */
+#heroes-table td:nth-child(3),
+#heroes-table td:nth-child(10),
+#heroes-table td:nth-child(14) {
+  white-space: normal;
+  max-width: 160px;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Name (col 2) — slightly wider, wraps if needed */
+#heroes-table td:nth-child(2) {
+  white-space: normal;
+  max-width: 130px;
+  word-break: break-word;
 }
 
 #heroes-table tbody tr:hover { background: #1a1a24; }
@@ -163,7 +182,6 @@ header .subtitle {
   color: var(--text-dim);
 }
 
-/* Mohamed: style your buttons here or add classes */
 .pagination button {
   background: var(--surface);
   border: 1px solid var(--border);

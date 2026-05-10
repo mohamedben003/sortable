@@ -44,7 +44,12 @@ function update() {
 function renderTable(heroes) {
   const tbody = document.getElementById("heroes-tbody");
   tbody.innerHTML = "";
-
+  if (heroes.length === 0) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td colspan="15" style="text-align:center; padding: 2rem; color: var(--text-dim);">⚠️ No heroes found. Try a different search.</td>`;
+    tbody.appendChild(tr);
+    return;
+  }
   heroes.forEach((hero) => {
     const tr = document.createElement("tr");
 
@@ -244,7 +249,7 @@ function paginateHeroes(heroes) {
 
   // Update button states
   document.getElementById("prev-btn").disabled = currentPage === 1;
-  document.getElementById("next-btn").disabled = currentPage === totalPages;
+  document.getElementById("next-btn").disabled = currentPage >= totalPages || heroes.length === 0;
 
   // Update page info text
   document.getElementById("page-info").textContent = `Page ${currentPage} of ${totalPages}`;
