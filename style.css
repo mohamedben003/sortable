@@ -60,7 +60,8 @@ header .subtitle {
 }
 
 #search-input,
-#page-size-select {
+#page-size-select,
+#search-field-select {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
@@ -80,7 +81,8 @@ header .subtitle {
 #search-input::placeholder { color: var(--text-dim); }
 
 #search-input:focus,
-#page-size-select:focus {
+#page-size-select:focus,
+#search-field-select:focus {
   border-color: var(--accent);
 }
 
