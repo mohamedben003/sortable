@@ -92,21 +92,17 @@ function renderTable(heroes) {
 // =============================================================
 
 function filterHeroes(heroes) {
-  // TODO (Hichame):
-  // Filter `heroes` by `searchQuery` (case-insensitive match on hero.name).
-  // Return the filtered array.
-  // Do NOT modify allHeroes.
-  // Example:
-  //   if (!searchQuery) return heroes;
-  //   return heroes.filter(h => h.name.toLowerCase().includes(searchQuery.toLowerCase()));
-
-  return heroes; // placeholder — replace with real filter
+  if (!searchQuery) return heroes;
+  const query = searchQuery.toLowerCase();
+  return heroes.filter(hero => hero.name.toLowerCase().includes(query));
 }
 
-// TODO (Hichame):
-// 1. Get the #search-input element
-// 2. Listen for "input" events
-// 3. Update `searchQuery` and `currentPage = 1` then call update()
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", (e) => {
+  searchQuery = e.target.value;
+  currentPage = 1;
+  update();
+});
 
 
 // =============================================================
