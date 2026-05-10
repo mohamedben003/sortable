@@ -3,6 +3,7 @@
 // ─────────────────────────────────────────
 let allHeroes = [];       // raw data from API — never modify this
 let searchQuery = "";     // set by Hichame
+let searchField = "name";   // field to search in
 let sortCol = "name";     // set by Karima
 let sortDir = "asc";      // set by Karima ("asc" | "desc")
 let currentPage = 1;      // set by Mohamed
@@ -94,12 +95,24 @@ function renderTable(heroes) {
 function filterHeroes(heroes) {
   if (!searchQuery) return heroes;
   const query = searchQuery.toLowerCase();
-  return heroes.filter(hero => hero.name.toLowerCase().includes(query));
+  
+  return heroes.filter(hero => {
+    const value = getSortValue(hero, searchField);
+    if (value === null || value === undefined) return false;
+    return String(value).toLowerCase().includes(query);
+  });
 }
 
 const searchInput = document.getElementById("search-input");
 searchInput.addEventListener("input", (e) => {
   searchQuery = e.target.value;
+  currentPage = 1;
+  update();
+});
+
+const searchFieldSelect = document.getElementById("search-field-select");
+searchFieldSelect.addEventListener("change", (e) => {
+  searchField = e.target.value;
   currentPage = 1;
   update();
 });
