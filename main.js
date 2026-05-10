@@ -169,7 +169,6 @@ function sortHeroes(heroes) {
 function convertValue(value) {
   value = value.toLowerCase().replace(/,/g,'');
 
-  value = value.replace(/,/g, "");
   if (value.includes("tons")) {
     return parseFloat(value) * 1000;
   }
@@ -186,13 +185,13 @@ function updateSortIndicators() {
   const headers = document.querySelectorAll("#heroes-table thead th");
   headers.forEach((th) => {
     if (!th.dataset.label) {
-      th.dataset.label = th.textContent.replace(/[↑↓]/g, "").trim();
+      th.dataset.label = th.textContent.replace(/[▲▼]/g, "").trim();
     }
     const label = th.dataset.label;
     const col = th.dataset.col;
 
     if (col === sortCol) {
-      const arrow = sortDir === "asc" ? "↑" : "↓";
+      const arrow = sortDir === "asc" ? "▼" : "▲";
       th.textContent = `${label} ${arrow}`;
     } else {
       th.textContent = label;
