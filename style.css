@@ -124,7 +124,7 @@ header .subtitle {
 
 #heroes-table th:hover { background: #1e1e2a; }
 
-/* Karima: sort indicator class — add .sorted-asc / .sorted-desc to active <th> */
+/* sort indicator class — add .sorted-asc / .sorted-desc to active <th> */
 #heroes-table th.sorted-asc::after  { content: " ↑"; color: var(--text); }
 #heroes-table th.sorted-desc::after { content: " ↓"; color: var(--text); }
 

@@ -1,13 +1,12 @@
-// ─────────────────────────────────────────
-// SHARED STATE (everyone reads these)
-// ─────────────────────────────────────────
-let allHeroes = [];       // raw data from API — never modify this
-let searchQuery = "";     // set by Hichame
-let searchField = "name";   // field to search in
-let sortCol = "name";     // set by Karima
-let sortDir = "asc";      // set by Karima ("asc" | "desc")
-let currentPage = 1;      // set by Mohamed
-let pageSize = 20;        // set by Mohamed (number or "all")
+// SHARED STATE 
+
+let allHeroes = [];       
+let searchQuery = "";     
+let searchField = "name"; 
+let sortCol = "name";     
+let sortDir = "asc";      
+let currentPage = 1;      
+let pageSize = 20;        
 
 
 // ─────────────────────────────────────────
@@ -29,9 +28,9 @@ fetch("https://rawcdn.githack.com/akabab/superhero-api/0.2.0/api/all.json")
 function update() {
   let result = allHeroes;
 
-  result = filterHeroes(result);    // Hichame
-  result = sortHeroes(result);      // Karima
-  result = paginateHeroes(result);  // Mohamed (also updates pagination UI)
+  result = filterHeroes(result);    
+  result = sortHeroes(result);      
+  result = paginateHeroes(result); 
 
   updateSortIndicators();
   renderTable(result);
@@ -89,7 +88,6 @@ function renderTable(heroes) {
 
 
 // =============================================================
-// Hichame — SEARCH
 // File: search.js (or add your code below this comment block)
 // =============================================================
 
