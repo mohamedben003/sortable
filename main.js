@@ -181,6 +181,26 @@ function convertValue(value) {
 
   return parseFloat(value);
 }
+
+
+function updateSortIndicators() {
+  const headers = document.querySelectorAll("#heroes-table thead th");
+  headers.forEach((th) => {
+    if (!th.dataset.label) {
+      th.dataset.label = th.textContent.replace(/[↑↓]/g, "").trim();
+    }
+    const label = th.dataset.label;
+    const col = th.dataset.col;
+
+    if (col === sortCol) {
+      const arrow = sortDir === "asc" ? "↑" : "↓";
+      th.textContent = `${label} ${arrow}`;
+    } else {
+      th.textContent = label;
+    }
+  });
+}
+
 // Initialize sorting UI once DOM is ready and before first render.
 initSortHeaders();
 
