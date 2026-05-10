@@ -33,6 +33,7 @@ function update() {
   result = sortHeroes(result);      // Karima
   result = paginateHeroes(result);  // Mohamed (also updates pagination UI)
 
+  updateSortIndicators();
   renderTable(result);
 }
 
@@ -117,32 +118,30 @@ searchFieldSelect.addEventListener("change", (e) => {
   update();
 });
 
-
-// =============================================================
-// Karima — SORT
-// File: sort.js (or add your code below this comment block)
-// =============================================================
-
 function sortHeroes(heroes) {
-  // TODO (Karima):
-  // Sort a COPY of `heroes` using `sortCol` and `sortDir`.
-  // Rules:
-  //   - Missing values (null, "null", "-", "") always go LAST
-  //   - Numeric strings like "82 kg" or "185 cm" sort numerically
-  //   - Everything else sorts alphabetically (case-insensitive)
-  //   - "asc" = A→Z / low→high, "desc" = Z→A / high→low
-  // Return the sorted copy. Do NOT mutate the input array.
+  function isMissing(value) {
+    return value === null || value === undefined || value === "" || value === "null" || value === "-";
+  }
 
-  return [...heroes]; // placeholder — replace with real sort
+  function parseSortable(value) {
+    if (typeof value === "number") return { type: "number", value };
+    if (typeof value === "string") {
+      const trimmed = value.trim();
+      if (trimmed) {
+        const num = convertValue(trimmed);
+        if (!Number.isNaN(num)) return { type: "number", value: num };
+      }
+      return { type: "string", value: trimmed.toLowerCase() };
+    }
+    return { type: "string", value: String(value).toLowerCase() };
+  }
+
+
 }
 
-// TODO (Karima):
-// 1. Get all <th> elements in #heroes-table thead
-// 2. Add "click" listeners to each
-//    → if clicking the same col: toggle sortDir
-//    → if clicking a new col: set sortCol, reset sortDir to "asc"
-//    → call update()
-// 3. Update visual indicators (↑ ↓) on the active <th>
+// Initialize sorting UI once DOM is ready and before first render.
+initSortHeaders();
+
 // Helper to extract a sortable value from a hero by column name:
 function getSortValue(hero, col) {
   switch (col) {
