@@ -32,15 +32,16 @@ superhero-project/
 **Section in `main.js`:** look for `Hichame — SEARCH`
 
 **Your TODO list:**
-1. Implement `filterHeroes(heroes)`:
-   - Filter by `searchQuery` on `hero.name` (case-insensitive)
+1. [x] Implement `filterHeroes(heroes)`:
+   - Filter by `searchQuery` on selected field (default: `name`) (case-insensitive)
    - If `searchQuery` is empty, return all heroes unchanged
    - Return the filtered array (do NOT mutate input)
-2. Hook up the `#search-input` element:
+2. [x] Hook up the `#search-input` element:
    - Listen for `"input"` events
    - Update the global `searchQuery` variable
    - Reset `currentPage = 1`
    - Call `update()`
+3. [x] **New Feature:** Added `#search-field-select` to specify the field for searching (Name, Full Name, Race, etc.).
 
 **Key rule:** Search should filter on every single keystroke, no button needed.
 
