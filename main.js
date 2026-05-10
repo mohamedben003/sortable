@@ -9,22 +9,21 @@ let currentPage = 1;
 let pageSize = 20;        
 
 
-// ─────────────────────────────────────────
 // FETCH DATA
-// ─────────────────────────────────────────
 fetch("https://rawcdn.githack.com/akabab/superhero-api/0.2.0/api/all.json")
-  .then((response) => response.json())
+  .then((response) => {
+  console.log("Raw response object:", response); // ADD THIS
+  return response.json();
+})
   .then((heroes) => {
     allHeroes = heroes;
     update(); // first render once data is ready
   });
 
 
-// ─────────────────────────────────────────
 // CENTRAL UPDATE PIPELINE
 // This is the only function that triggers a re-render.
 // calls update() when the state changes.
-// ─────────────────────────────────────────
 function update() {
   let result = allHeroes;
 
@@ -37,10 +36,9 @@ function update() {
 }
 
 
-// ─────────────────────────────────────────
 // RENDER TABLE ROWS
 // Receives the final processed array and displays it.
-// ─────────────────────────────────────────
+
 function renderTable(heroes) {
   const tbody = document.getElementById("heroes-tbody");
   tbody.innerHTML = "";
@@ -91,10 +89,7 @@ function renderTable(heroes) {
   });
 }
 
-
-// =============================================================
 // Search.js
-// =============================================================
 
 function filterHeroes(heroes) {
   if (!searchQuery) return heroes;
@@ -172,7 +167,7 @@ function sortHeroes(heroes) {
 }
 
 function convertValue(value) {
-  value = value.toLowerCase();
+  value = value.toLowerCase().replace(/,/g,'');
 
   if (value.includes("tons")) {
     return parseFloat(value) * 1000;
@@ -225,9 +220,9 @@ function initSortHeaders() {
 // Initialize sorting UI once DOM is ready and before first render.
 initSortHeaders();
 
-// =============================================================
+
 // Pagination :
-// =============================================================
+
 
 function paginateHeroes(heroes) {
   // "all" means show everything, no slicing needed
