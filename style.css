@@ -252,7 +252,7 @@ header h1 {
   padding: 0.6rem 0.65rem;
   font-size: 0.88rem;
   color: var(--text-primary);
-  vertical-align: middle;
+  vertical-align: top;
   white-space: normal;
   overflow-wrap: break-word;
   line-height: 1.4;
@@ -260,13 +260,13 @@ header h1 {
 
 #heroes-table tbody td:nth-child(2) { font-weight: 600; }
 
-#heroes-table tbody td:nth-child(3),
-#heroes-table tbody td:nth-child(14) {
+.clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   max-height: 4.2em;
+  line-height: 1.4;
 }
 
 #heroes-table tbody td:nth-child(4),

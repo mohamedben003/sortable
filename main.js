@@ -70,7 +70,7 @@ function renderTable(heroes) {
     tr.innerHTML = `
       <td><img src="${hero.images.xs}" alt="${hero.name}" class="hero-icon" /></td>
       <td>${val(hero.name)}</td>
-      <td>${val(hero.biography.fullName)}</td>
+      <td><div class="clamp">${val(hero.biography.fullName)}</div></td>
       <td>${val(hero.powerstats.intelligence)}</td>
       <td>${val(hero.powerstats.strength)}</td>
       <td>${val(hero.powerstats.speed)}</td>
@@ -81,7 +81,7 @@ function renderTable(heroes) {
       <td>${val(hero.appearance.gender)}</td>
       <td>${height}</td>
       <td>${weight}</td>
-      <td>${val(hero.biography.placeOfBirth)}</td>
+      <td><div class="clamp">${val(hero.biography.placeOfBirth)}</div></td>
       <td class="alignment ${val(hero.biography.alignment)}">${val(hero.biography.alignment)}</td>
     `;
 
