@@ -174,6 +174,7 @@ function sortHeroes(heroes) {
 function convertValue(value) {
   value = value.toLowerCase();
 
+  value = value.replace(/,/g, "");
   if (value.includes("tons")) {
     return parseFloat(value) * 1000;
   }
