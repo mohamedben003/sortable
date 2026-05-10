@@ -201,6 +201,24 @@ function updateSortIndicators() {
   });
 }
 
+function initSortHeaders() {
+  const headers = document.querySelectorAll("#heroes-table thead th");
+  headers.forEach((th) => {
+    const col = th.dataset.col;
+    if (!col || col === "icon") return;
+
+    th.addEventListener("click", () => {
+      if (sortCol === col) {
+        sortDir = sortDir === "asc" ? "desc" : "asc";
+      } else {
+        sortCol = col;
+        sortDir = "asc";
+      }
+      update();
+    });
+  });
+}
+
 // Initialize sorting UI once DOM is ready and before first render.
 initSortHeaders();
 
