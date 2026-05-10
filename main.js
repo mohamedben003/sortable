@@ -136,7 +136,36 @@ function sortHeroes(heroes) {
     return { type: "string", value: String(value).toLowerCase() };
   }
 
+  let sorted = [...heroes];
 
+  sorted.sort((a, b) => {
+    const rawA = getSortValue(a, sortCol);
+    const rawB = getSortValue(b, sortCol);
+
+    const missingA = isMissing(rawA);
+    const missingB = isMissing(rawB);
+    if (missingA || missingB) {
+      if (missingA && missingB) return 0;
+      return missingA ? 1 : -1;
+    }
+
+    const aItem = parseSortable(rawA);
+    const bItem = parseSortable(rawB);
+
+    let comparison = 0;
+    if (aItem.type === "number" && bItem.type === "number") {
+      comparison = aItem.value - bItem.value;
+    } else {
+      comparison = String(aItem.value).localeCompare(String(bItem.value), undefined, {
+        numeric: false,
+        sensitivity: "base"
+      });
+    }
+
+    return sortDir === "asc" ? comparison : -comparison;
+  });
+
+  return sorted;
 }
 
 // Initialize sorting UI once DOM is ready and before first render.
