@@ -168,6 +168,19 @@ function sortHeroes(heroes) {
   return sorted;
 }
 
+function convertValue(value) {
+  value = value.toLowerCase();
+
+  if (value.includes("tons")) {
+    return parseFloat(value) * 1000;
+  }
+
+  if (value.includes("meters")) {
+    return parseFloat(value) * 100;
+  }
+
+  return parseFloat(value);
+}
 // Initialize sorting UI once DOM is ready and before first render.
 initSortHeaders();
 
